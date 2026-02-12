@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+
+<style>
+body{
+  margin:0;
+  background:#ffe6ee;
+  font-family: Arial, sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+#card{
+  background:#fff;
+  width:90%;
+  max-width:400px;
+  padding:25px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+button{
+  padding:12px 22px;
+  font-size:16px;
+  border:none;
+  border-radius:10px;
+  margin:10px;
+  cursor:pointer;
+}
+
+#yesBtn{
+  background:#ff4d6d;
+  color:white;
+  transition:transform 0.3s ease;
+}
+
+#noBtn{
+  background:#ddd;
+}
+
+.hidden{ display:none; }
+
+img{
+  width:100%;
+  border-radius:12px;
+  margin:10px 0;
+}
+
+video{
+  width:100%;
+  border-radius:12px;
+  margin:10px 0;
+}
+</style>
+</head>
+
+<body>
+
+<div id="card">
+
+  <!-- QUESTION SCREEN -->
+  <div id="questionScreen">
+    <h2 id="questionText"></h2>
+    <button id="yesBtn">Yes ❤️</button>
+    <button id="noBtn">No 🙈</button>
+  </div>
+
+  <!-- ROMANTIC SCREEN -->
+  <div id="loveScreen" class="hidden">
+    <h2>Yayyy 💖</h2>
+
+    <!-- GIFs -->
+    <img src="gif1.gif">
+    <img src="gif2.gif">
+
+    <!-- Compliment -->
+    <p style="font-size:18px;">
+      Tum meri zindagi ka sabse khoobsurat surprise ho ✨
+    </p>
+
+    <!-- Video edits -->
+    <video controls>
+      <source src="edit1.mp4" type="video/mp4">
+    </video>
+
+    <video controls>
+      <source src="edit2.mp4" type="video/mp4">
+    </video>
+
+    <!-- Voice -->
+    <p>Ab meri awaaz suno 🥺</p>
+    <audio controls>
+      <source src="voice.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+</div>
+
+<script>
+const questions = [
+  "Will you be my Valentine? ❤️",
+  "Ek baar aur soch lo 🙈",
+  "Sach me No? 😳",
+  "Dil se haan bolo na 🥺",
+  "Itni bhi kya jaldi hai 😭",
+  "Last chance 😢",
+  "Pakka No bol rahi ho? 💔",
+  "Dil toot raha hai 😭",
+  "Ab toh haan bol do 🥹",
+  "Please ❤️"
+];
+
+let qIndex = 0;
+let scale = 1;
+
+const qText = document.getElementById("questionText");
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+
+const questionScreen = document.getElementById("questionScreen");
+const loveScreen = document.getElementById("loveScreen");
+
+qText.innerText = questions[qIndex];
+
+noBtn.onclick = () => {
+  qIndex++;
+  if(qIndex < questions.length){
+    qText.innerText = questions[qIndex];
+  }
+  scale += 0.25;
+  yesBtn.style.transform = `scale(${scale})`;
+};
+
+yesBtn.onclick = () => {
+  questionScreen.classList.add("hidden");
+  loveScreen.classList.remove("hidden");
+};
+</script>
+
+</body>
+</html>
